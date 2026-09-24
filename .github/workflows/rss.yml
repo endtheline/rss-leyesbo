@@ -1,4 +1,4 @@
-name: Crear RSS Gaceta Bolivia
+name: Crear RSSGaceta Bolivia
 
 on:
   schedule:
