@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 from feedgen.feed import FeedGenerator
 from datetime import datetime
 
-URL = "https://www.gacetaoficialdebolivia.gob.bo/normas/listadonor/10"
+URL = "https://gacetaoficialdebolivia.gob.bo/normas/listadonor/10"
 
 headers = {
     "User-Agent": "Mozilla/5.0 RSS Bot"
