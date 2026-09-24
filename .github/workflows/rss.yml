@@ -1,0 +1,40 @@
+name: Crear RSS Gaceta Bolivia
+
+on:
+  schedule:
+    - cron: "*/30 * * * *"
+
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+
+  rss:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+    - name: Descargar repositorio
+      uses: actions/checkout@v4
+
+    - name: Instalar Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: "3.x"
+
+    - name: Instalar librerías
+      run: |
+        pip install -r requirements.txt
+
+    - name: Crear RSS
+      run: |
+        python scraper.py
+
+    - name: Guardar feed.xml
+      run: |
+        git add feed.xml
+        git commit -m "Actualizar RSS" || exit 0
+        git push
