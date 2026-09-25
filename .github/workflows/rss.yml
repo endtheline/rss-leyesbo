@@ -1,4 +1,4 @@
-name: Crear RSSGaceta Bolivia
+name: Crear RSS Gaceta Bolivia
 
 on:
   schedule:
@@ -23,11 +23,21 @@ jobs:
     - name: Instalar Python
       uses: actions/setup-python@v5
       with:
-        python-version: "3.x"
+        python-version: "3.12"
 
     - name: Instalar librerías
       run: |
+        python -m pip install --upgrade pip
         pip install -r requirements.txt
+
+    - name: Diagnóstico DNS
+      run: |
+        python - <<EOF
+        import socket
+        dominio = "gacetaoficialdebolivia.gob.bo"
+        print("Resolviendo:", dominio)
+        print(socket.gethostbyname(dominio))
+        EOF
 
     - name: Crear RSS
       run: |
@@ -35,6 +45,11 @@ jobs:
 
     - name: Guardar feed.xml
       run: |
+        git config --global user.name "github-actions"
+        git config --global user.email "github-actions@github.com"
+
         git add feed.xml
-        git commit -m "Actualizar RSS" || exit 0
+
+        git commit -m "Actualizar RSS" || echo "Sin cambios"
+
         git push
