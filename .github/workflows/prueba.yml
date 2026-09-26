@@ -3,39 +3,26 @@ name: Prueba Gaceta
 on:
   workflow_dispatch:
 
-
 jobs:
 
   prueba:
 
     runs-on: ubuntu-latest
 
-
     steps:
 
     - name: Descargar código
       uses: actions/checkout@v4
-
 
     - name: Instalar Python
       uses: actions/setup-python@v5
       with:
         python-version: "3.12"
 
-
     - name: Instalar requests
       run: |
-        pip install requests
+        python -m pip install requests
 
-
-    - name: Probar DNS
-      run: |
-        python - <<EOF
-        import socket
-        print(socket.gethostbyname("gacetaoficialdebolivia.gob.bo"))
-        EOF
-
-
-    - name: Probar conexión
+    - name: Ejecutar diagnóstico
       run: |
         python prueba.py
