@@ -1,6 +1,6 @@
 import requests
 
-URL = "https://gacetaoficialdebolivia.gob.bo/normas/listadonor/10"
+URL = "http://www.gacetaoficialdebolivia.gob.bo/normas/listadonor/10"
 
 headers = {
     "User-Agent": "Mozilla/5.0"
