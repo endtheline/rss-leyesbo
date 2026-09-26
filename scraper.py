@@ -6,7 +6,7 @@ from urllib3.util.retry import Retry
 from requests.adapters import HTTPAdapter
 
 
-URL = "https://gacetaoficialdebolivia.gob.bo/normas/listadonor/10"
+URL = "http://www.gacetaoficialdebolivia.gob.bo/normas/listadonor/10"
 
 
 headers = {
